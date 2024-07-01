@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QComboBox, QFrame,
     QGridLayout, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
-    QWidget)
+    QTabWidget, QToolButton, QTreeWidget, QTreeWidgetItem,
+    QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -294,15 +294,20 @@ class Ui_Widget(object):
 
         self.verticalLayout_3.addWidget(self.txtBarCode)
 
+        self.tbFoto = QToolButton(self.frame_2)
+        self.tbFoto.setObjectName(u"tbFoto")
+
+        self.verticalLayout_3.addWidget(self.tbFoto)
+
 
         self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
 
         self.tabWidget.addTab(self.tabCadInt, "")
-        self.tab_3 = QWidget()
-        self.tab_3.setObjectName(u"tab_3")
-        self.gridLayout_2 = QGridLayout(self.tab_3)
+        self.tabGerSet = QWidget()
+        self.tabGerSet.setObjectName(u"tabGerSet")
+        self.gridLayout_2 = QGridLayout(self.tabGerSet)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.frame_10 = QFrame(self.tab_3)
+        self.frame_10 = QFrame(self.tabGerSet)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setMaximumSize(QSize(16777215, 120))
         self.frame_10.setFrameShape(QFrame.StyledPanel)
@@ -329,7 +334,7 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_10, 3, 0, 1, 1)
 
-        self.frame_8 = QFrame(self.tab_3)
+        self.frame_8 = QFrame(self.tabGerSet)
         self.frame_8.setObjectName(u"frame_8")
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
@@ -345,7 +350,7 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_8, 0, 1, 1, 1)
 
-        self.frame_12 = QFrame(self.tab_3)
+        self.frame_12 = QFrame(self.tabGerSet)
         self.frame_12.setObjectName(u"frame_12")
         self.frame_12.setMaximumSize(QSize(16777215, 300))
         self.frame_12.setFrameShape(QFrame.StyledPanel)
@@ -365,7 +370,7 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_12, 3, 1, 1, 1)
 
-        self.frame_11 = QFrame(self.tab_3)
+        self.frame_11 = QFrame(self.tabGerSet)
         self.frame_11.setObjectName(u"frame_11")
         sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         sizePolicy1.setHorizontalStretch(0)
@@ -384,14 +389,6 @@ class Ui_Widget(object):
         __qtreewidgetitem13.setFont(0, font1);
         __qtreewidgetitem13.setBackground(0, QColor(255, 255, 0));
         self.treeSetores.setHeaderItem(__qtreewidgetitem13)
-        brush3 = QBrush(QColor(255, 85, 0, 255))
-        brush3.setStyle(Qt.SolidPattern)
-        brush4 = QBrush(QColor(0, 255, 255, 255))
-        brush4.setStyle(Qt.SolidPattern)
-        __qtreewidgetitem14 = QTreeWidgetItem(self.treeSetores)
-        __qtreewidgetitem14.setBackground(0, brush3);
-        __qtreewidgetitem15 = QTreeWidgetItem(self.treeSetores)
-        __qtreewidgetitem15.setBackground(0, brush4);
         self.treeSetores.setObjectName(u"treeSetores")
         self.treeSetores.setMaximumSize(QSize(300, 500))
 
@@ -400,7 +397,7 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_11, 1, 1, 1, 1)
 
-        self.frame_7 = QFrame(self.tab_3)
+        self.frame_7 = QFrame(self.tabGerSet)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setMaximumSize(QSize(16777215, 120))
         self.frame_7.setFrameShape(QFrame.StyledPanel)
@@ -417,7 +414,7 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_7, 0, 0, 1, 1)
 
-        self.frame_9 = QFrame(self.tab_3)
+        self.frame_9 = QFrame(self.tabGerSet)
         self.frame_9.setObjectName(u"frame_9")
         sizePolicy1.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
         self.frame_9.setSizePolicy(sizePolicy1)
@@ -452,12 +449,12 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.frame_9, 1, 0, 1, 1)
 
-        self.tabWidget.addTab(self.tab_3, "")
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.gridLayout_3 = QGridLayout(self.tab)
+        self.tabWidget.addTab(self.tabGerSet, "")
+        self.tabContVideo = QWidget()
+        self.tabContVideo.setObjectName(u"tabContVideo")
+        self.gridLayout_3 = QGridLayout(self.tabContVideo)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.frame_13 = QFrame(self.tab)
+        self.frame_13 = QFrame(self.tabContVideo)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Raised)
@@ -472,14 +469,14 @@ class Ui_Widget(object):
 
         self.gridLayout_3.addWidget(self.frame_13, 0, 0, 1, 1)
 
-        self.frame_14 = QFrame(self.tab)
+        self.frame_14 = QFrame(self.tabContVideo)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
 
         self.gridLayout_3.addWidget(self.frame_14, 0, 2, 1, 1)
 
-        self.frame_15 = QFrame(self.tab)
+        self.frame_15 = QFrame(self.tabContVideo)
         self.frame_15.setObjectName(u"frame_15")
         self.frame_15.setFrameShape(QFrame.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Raised)
@@ -502,16 +499,16 @@ class Ui_Widget(object):
 
         self.gridLayout_3.addWidget(self.frame_15, 1, 0, 1, 1)
 
-        self.frame_17 = QFrame(self.tab)
+        self.frame_17 = QFrame(self.tabContVideo)
         self.frame_17.setObjectName(u"frame_17")
         self.frame_17.setFrameShape(QFrame.StyledPanel)
         self.frame_17.setFrameShadow(QFrame.Raised)
         self.verticalLayout_11 = QVBoxLayout(self.frame_17)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.twAudiencia = QTreeWidget(self.frame_17)
-        __qtreewidgetitem16 = QTreeWidgetItem()
-        __qtreewidgetitem16.setText(0, u"Internos");
-        self.twAudiencia.setHeaderItem(__qtreewidgetitem16)
+        __qtreewidgetitem14 = QTreeWidgetItem()
+        __qtreewidgetitem14.setText(0, u"Nome");
+        self.twAudiencia.setHeaderItem(__qtreewidgetitem14)
         self.twAudiencia.setObjectName(u"twAudiencia")
 
         self.verticalLayout_11.addWidget(self.twAudiencia)
@@ -519,7 +516,7 @@ class Ui_Widget(object):
 
         self.gridLayout_3.addWidget(self.frame_17, 1, 2, 1, 1)
 
-        self.frame_16 = QFrame(self.tab)
+        self.frame_16 = QFrame(self.tabContVideo)
         self.frame_16.setObjectName(u"frame_16")
         self.frame_16.setFrameShape(QFrame.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Raised)
@@ -540,14 +537,14 @@ class Ui_Widget(object):
 
         self.gridLayout_3.addWidget(self.frame_16, 2, 0, 1, 1)
 
-        self.tabWidget.addTab(self.tab, "")
+        self.tabWidget.addTab(self.tabContVideo, "")
 
         self.verticalLayout_7.addWidget(self.tabWidget)
 
 
         self.retranslateUi(Widget)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -603,6 +600,7 @@ class Ui_Widget(object):
 #endif // QT_CONFIG(tooltip)
         self.cbbSetor.setCurrentText("")
         self.txtBarCode.setText(QCoreApplication.translate("Widget", u"Codigo de Barras", None))
+        self.tbFoto.setText(QCoreApplication.translate("Widget", u"Selecionar Foto", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabCadInt), QCoreApplication.translate("Widget", u"Cadastro de internos", None))
         self.btnSalvarSetor.setText(QCoreApplication.translate("Widget", u"Salvar", None))
         self.btnDeletarCadastro.setText(QCoreApplication.translate("Widget", u"Deletar", None))
@@ -610,27 +608,20 @@ class Ui_Widget(object):
         self.btnAtualizarSetor.setText(QCoreApplication.translate("Widget", u"Atualizar", None))
         ___qtreewidgetitem13 = self.treeSetores.headerItem()
         ___qtreewidgetitem13.setText(0, QCoreApplication.translate("Widget", u"Setores", None));
-
-        __sortingEnabled1 = self.treeSetores.isSortingEnabled()
-        self.treeSetores.setSortingEnabled(False)
-        ___qtreewidgetitem14 = self.treeSetores.topLevelItem(0)
-        ___qtreewidgetitem14.setText(0, QCoreApplication.translate("Widget", u"Cozinha", None));
-        ___qtreewidgetitem15 = self.treeSetores.topLevelItem(1)
-        ___qtreewidgetitem15.setText(0, QCoreApplication.translate("Widget", u"Administrativo", None));
-        self.treeSetores.setSortingEnabled(__sortingEnabled1)
-
         self.label_3.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Cadastrar/Atualizar Setores</span></p></body></html>", None))
         self.txtSetorCadastro.setText(QCoreApplication.translate("Widget", u"Setor", None))
         self.lblCor.setText("")
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("Widget", u"Gerenciamento Setores", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGerSet), QCoreApplication.translate("Widget", u"Gerenciamento Setores", None))
 #if QT_CONFIG(accessibility)
-        self.tab.setAccessibleName("")
+        self.tabContVideo.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
         self.label_6.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; vertical-align:super;\">Internos em Audi\u00eancia</span></p></body></html>", None))
         self.txtNomeAud.setText(QCoreApplication.translate("Widget", u"Nome", None))
         self.txtCelaAud.setText(QCoreApplication.translate("Widget", u"Cela", None))
+        ___qtreewidgetitem14 = self.twAudiencia.headerItem()
+        ___qtreewidgetitem14.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
         self.pbEntradaAud.setText(QCoreApplication.translate("Widget", u"Entrada", None))
         self.btnSaidaAud.setText(QCoreApplication.translate("Widget", u"Saida", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Controle Video", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabContVideo), QCoreApplication.translate("Widget", u"Controle Video", None))
     # retranslateUi
 
