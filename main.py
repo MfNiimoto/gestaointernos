@@ -22,8 +22,12 @@ class MainWindow(QWidget):
         self.ui.tbFoto.clicked.connect(self.select_photo)
         self.ui.treeInternos.itemDoubleClicked.connect(self.show_interno_details)
         self.ui.btnDeletar.clicked.connect(self.delete_interno)
+        self.ui.pbEntradaAud.clicked.connect(self.save_video)
+        self.ui.btnSaidaAud.clicked.connect(self.delete_video)
+        self.load_video()
         self.load_setores()
         self.load_internos()
+        
 
     def create_tables(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS setores (
@@ -38,6 +42,10 @@ class MainWindow(QWidget):
                                 barcode TEXT NOT NULL,
                                 setor TEXT NOT NULL,
                                 foto TEXT)''')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS video (
+                                id INTEGER PRIMARY KEY,
+                                nome_video TEXT NOT NULL,
+                                cela_video TEXT NOT NULL)''')
         self.connection.commit()
 
     def choose_color(self, event):
@@ -148,6 +156,38 @@ class MainWindow(QWidget):
                 self.load_internos()
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um interno para deletar.')
+
+    def save_video(self):
+        nome_video = self.ui.txtNomeAud.text().upper()
+        cela_video = self.ui.txtCelaAud.text().upper()
+        if nome_video and cela_video:
+            self.cursor.execute('INSERT INTO video (nome_video, cela_video) VALUES (?, ?)', (nome_video, cela_video))
+            self.connection.commit()
+            QMessageBox.information(self, 'Success', 'Vídeo cadastrado com sucesso!')
+            self.load_video()
+        else:
+            QMessageBox.warning(self, 'Warning', 'Por favor, preencha todos os campos.')
+
+    def load_video(self): # exibe todas as entradas de vídeo no widget tree com as colunas nome e cela
+        self.ui.twAudiencia.clear() # limpa o widget tree
+        self.cursor.execute('SELECT nome_video, cela_video FROM video') # seleciona todas as entradas de vídeo
+        video = self.cursor.fetchall() # armazena em uma lista
+        for v in video: # percorre a lista e adiciona cada entrada como uma linha no widget tree
+            item = QTreeWidgetItem([v[0], v[1]])
+            self.ui.twAudiencia.addTopLevelItem(item)
+    
+    def delete_video(self):
+        selected_item = self.ui.twAudiencia.currentItem()
+        if selected_item:
+            nome_video = selected_item.text(0)
+            reply = QMessageBox.question(self, 'Confirmar Exclusão', f'Tem certeza que deseja excluir o vídeo {nome_video}?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                self.cursor.execute('DELETE FROM video WHERE nome_video = ?', (nome_video,))
+                self.connection.commit()
+                QMessageBox.information(self, 'Success', 'Vídeo deletado com sucesso!')
+                self.load_video()
+        else:
+            QMessageBox.warning(self, 'Warning', 'Por favor, selecione um vídeo para deletar.')
 
     def closeEvent(self, event):
         self.connection.close()
