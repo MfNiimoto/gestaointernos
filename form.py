@@ -35,115 +35,24 @@ class Ui_Widget(object):
         self.tabExib.setObjectName(u"tabExib")
         self.gridLayout_4 = QGridLayout(self.tabExib)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.twLixo = QTreeWidget(self.tabExib)
-        __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(0, u"LIXO/ESGOTO/RECICLAGEM");
-        self.twLixo.setHeaderItem(__qtreewidgetitem)
-        self.twLixo.setObjectName(u"twLixo")
-
-        self.gridLayout_4.addWidget(self.twLixo, 3, 1, 1, 2)
-
-        self.twJardin = QTreeWidget(self.tabExib)
-        __qtreewidgetitem1 = QTreeWidgetItem()
-        __qtreewidgetitem1.setText(0, u"JARDINAGEM");
-        self.twJardin.setHeaderItem(__qtreewidgetitem1)
-        self.twJardin.setObjectName(u"twJardin")
-
-        self.gridLayout_4.addWidget(self.twJardin, 2, 3, 1, 2)
-
-        self.twEletricista = QTreeWidget(self.tabExib)
-        __qtreewidgetitem2 = QTreeWidgetItem()
-        __qtreewidgetitem2.setText(0, u"ELETRICISTA");
-        self.twEletricista.setHeaderItem(__qtreewidgetitem2)
-        self.twEletricista.setObjectName(u"twEletricista")
-
-        self.gridLayout_4.addWidget(self.twEletricista, 3, 3, 1, 2)
-
-        self.twHorta = QTreeWidget(self.tabExib)
-        __qtreewidgetitem3 = QTreeWidgetItem()
-        __qtreewidgetitem3.setText(0, u"HORTA");
-        self.twHorta.setHeaderItem(__qtreewidgetitem3)
-        self.twHorta.setObjectName(u"twHorta")
-
-        self.gridLayout_4.addWidget(self.twHorta, 1, 3, 1, 2)
-
-        self.twCostura = QTreeWidget(self.tabExib)
-        __qtreewidgetitem4 = QTreeWidgetItem()
-        __qtreewidgetitem4.setText(0, u"COSTURA");
-        self.twCostura.setHeaderItem(__qtreewidgetitem4)
-        self.twCostura.setObjectName(u"twCostura")
-
-        self.gridLayout_4.addWidget(self.twCostura, 2, 1, 1, 2)
-
-        self.twObra = QTreeWidget(self.tabExib)
-        __qtreewidgetitem5 = QTreeWidgetItem()
-        __qtreewidgetitem5.setText(0, u"OBRA");
-        self.twObra.setHeaderItem(__qtreewidgetitem5)
-        self.twObra.setObjectName(u"twObra")
-
-        self.gridLayout_4.addWidget(self.twObra, 2, 0, 1, 1)
-
-        self.twFaxina = QTreeWidget(self.tabExib)
-        __qtreewidgetitem6 = QTreeWidgetItem()
-        __qtreewidgetitem6.setText(0, u"FAXINA");
-        self.twFaxina.setHeaderItem(__qtreewidgetitem6)
-        self.twFaxina.setObjectName(u"twFaxina")
-
-        self.gridLayout_4.addWidget(self.twFaxina, 1, 1, 1, 2)
-
-        self.twPrendedor = QTreeWidget(self.tabExib)
-        __qtreewidgetitem7 = QTreeWidgetItem()
-        __qtreewidgetitem7.setText(0, u"PRENDEDOR");
-        self.twPrendedor.setHeaderItem(__qtreewidgetitem7)
-        self.twPrendedor.setObjectName(u"twPrendedor")
-
-        self.gridLayout_4.addWidget(self.twPrendedor, 1, 0, 1, 1)
-
-        self.twCopa = QTreeWidget(self.tabExib)
-        __qtreewidgetitem8 = QTreeWidgetItem()
-        __qtreewidgetitem8.setText(0, u"COPA");
-        self.twCopa.setHeaderItem(__qtreewidgetitem8)
-        self.twCopa.setObjectName(u"twCopa")
-
-        self.gridLayout_4.addWidget(self.twCopa, 0, 3, 1, 2)
-
-        self.twAdm = QTreeWidget(self.tabExib)
-        __qtreewidgetitem9 = QTreeWidgetItem()
-        __qtreewidgetitem9.setText(0, u"ADMINISTRATIVO");
-        self.twAdm.setHeaderItem(__qtreewidgetitem9)
-        self.twAdm.setObjectName(u"twAdm")
-
-        self.gridLayout_4.addWidget(self.twAdm, 0, 1, 1, 2)
-
-        self.twCozinha = QTreeWidget(self.tabExib)
-        brush = QBrush(QColor(0, 0, 0, 255))
-        brush.setStyle(Qt.SolidPattern)
-        __qtreewidgetitem10 = QTreeWidgetItem()
-        __qtreewidgetitem10.setText(0, u"COZINHA");
-        __qtreewidgetitem10.setBackground(0, QColor(255, 62, 48));
-        __qtreewidgetitem10.setForeground(0, brush);
-        self.twCozinha.setHeaderItem(__qtreewidgetitem10)
-        font = QFont()
-        font.setUnderline(True)
-        __qtreewidgetitem11 = QTreeWidgetItem(self.twCozinha)
-        __qtreewidgetitem11.setFont(0, font);
-        self.twCozinha.setObjectName(u"twCozinha")
-
-        self.gridLayout_4.addWidget(self.twCozinha, 0, 0, 1, 1)
-
-        self.twSerra = QTreeWidget(self.tabExib)
-        __qtreewidgetitem12 = QTreeWidgetItem()
-        __qtreewidgetitem12.setText(0, u"SERRALHERIA");
-        self.twSerra.setHeaderItem(__qtreewidgetitem12)
-        self.twSerra.setObjectName(u"twSerra")
-
-        self.gridLayout_4.addWidget(self.twSerra, 3, 0, 1, 1)
-
         self.txtBarCodeExib = QLineEdit(self.tabExib)
         self.txtBarCodeExib.setObjectName(u"txtBarCodeExib")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtBarCodeExib.sizePolicy().hasHeightForWidth())
+        self.txtBarCodeExib.setSizePolicy(sizePolicy)
+        self.txtBarCodeExib.setMaximumSize(QSize(200, 16777215))
         self.txtBarCodeExib.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_4.addWidget(self.txtBarCodeExib, 4, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.txtBarCodeExib, 1, 0, 1, 1)
+
+        self.frameExib = QFrame(self.tabExib)
+        self.frameExib.setObjectName(u"frameExib")
+        self.frameExib.setFrameShape(QFrame.StyledPanel)
+        self.frameExib.setFrameShadow(QFrame.Raised)
+
+        self.gridLayout_4.addWidget(self.frameExib, 0, 0, 1, 1)
 
         self.tabWidget.addTab(self.tabExib, "")
         self.tabCadInt = QWidget()
@@ -159,11 +68,11 @@ class Ui_Widget(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.treeInternos = QTreeWidget(self.frame_5)
         self.treeInternos.setObjectName(u"treeInternos")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.treeInternos.sizePolicy().hasHeightForWidth())
-        self.treeInternos.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.treeInternos.sizePolicy().hasHeightForWidth())
+        self.treeInternos.setSizePolicy(sizePolicy1)
         self.treeInternos.setMaximumSize(QSize(390, 16777215))
         self.treeInternos.setFrameShape(QFrame.StyledPanel)
         self.treeInternos.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContentsOnFirstShow)
@@ -225,6 +134,8 @@ class Ui_Widget(object):
         self.btnDeletar.setObjectName(u"btnDeletar")
         self.btnDeletar.setMaximumSize(QSize(120, 16777215))
         palette = QPalette()
+        brush = QBrush(QColor(0, 0, 0, 255))
+        brush.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
         brush1 = QBrush(QColor(255, 0, 0, 255))
         brush1.setStyle(Qt.SolidPattern)
@@ -372,23 +283,23 @@ class Ui_Widget(object):
 
         self.frame_11 = QFrame(self.tabGerSet)
         self.frame_11.setObjectName(u"frame_11")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.frame_11.sizePolicy().hasHeightForWidth())
-        self.frame_11.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_11.sizePolicy().hasHeightForWidth())
+        self.frame_11.setSizePolicy(sizePolicy2)
         self.frame_11.setMaximumSize(QSize(16777215, 500))
         self.frame_11.setFrameShape(QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.treeSetores = QTreeWidget(self.frame_11)
-        font1 = QFont()
-        font1.setPointSize(10)
-        __qtreewidgetitem13 = QTreeWidgetItem()
-        __qtreewidgetitem13.setFont(0, font1);
-        __qtreewidgetitem13.setBackground(0, QColor(255, 255, 0));
-        self.treeSetores.setHeaderItem(__qtreewidgetitem13)
+        font = QFont()
+        font.setPointSize(10)
+        __qtreewidgetitem = QTreeWidgetItem()
+        __qtreewidgetitem.setFont(0, font);
+        __qtreewidgetitem.setBackground(0, QColor(255, 255, 0));
+        self.treeSetores.setHeaderItem(__qtreewidgetitem)
         self.treeSetores.setObjectName(u"treeSetores")
         self.treeSetores.setMaximumSize(QSize(300, 500))
 
@@ -416,8 +327,8 @@ class Ui_Widget(object):
 
         self.frame_9 = QFrame(self.tabGerSet)
         self.frame_9.setObjectName(u"frame_9")
-        sizePolicy1.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
-        self.frame_9.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
+        self.frame_9.setSizePolicy(sizePolicy2)
         self.frame_9.setMaximumSize(QSize(250, 16777215))
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
@@ -492,7 +403,7 @@ class Ui_Widget(object):
 
         self.verticalLayout_10.addWidget(self.txtCelaAud)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
+        self.verticalSpacer_3 = QSpacerItem(20, 350, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
 
         self.verticalLayout_10.addItem(self.verticalSpacer_3)
 
@@ -506,9 +417,9 @@ class Ui_Widget(object):
         self.verticalLayout_11 = QVBoxLayout(self.frame_17)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.twAudiencia = QTreeWidget(self.frame_17)
-        __qtreewidgetitem14 = QTreeWidgetItem()
-        __qtreewidgetitem14.setText(0, u"Nome");
-        self.twAudiencia.setHeaderItem(__qtreewidgetitem14)
+        __qtreewidgetitem1 = QTreeWidgetItem()
+        __qtreewidgetitem1.setText(0, u"Nome");
+        self.twAudiencia.setHeaderItem(__qtreewidgetitem1)
         self.twAudiencia.setObjectName(u"twAudiencia")
 
         self.verticalLayout_11.addWidget(self.twAudiencia)
@@ -538,13 +449,117 @@ class Ui_Widget(object):
         self.gridLayout_3.addWidget(self.frame_16, 2, 0, 1, 1)
 
         self.tabWidget.addTab(self.tabContVideo, "")
+        self.tabAtendimento = QWidget()
+        self.tabAtendimento.setObjectName(u"tabAtendimento")
+        self.gridLayout_5 = QGridLayout(self.tabAtendimento)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.frame_18 = QFrame(self.tabAtendimento)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_8 = QVBoxLayout(self.frame_18)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.lblAtendimento = QLabel(self.frame_18)
+        self.lblAtendimento.setObjectName(u"lblAtendimento")
+        self.lblAtendimento.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_8.addWidget(self.lblAtendimento)
+
+
+        self.gridLayout_5.addWidget(self.frame_18, 0, 0, 1, 1)
+
+        self.frame_19 = QFrame(self.tabAtendimento)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+
+        self.gridLayout_5.addWidget(self.frame_19, 0, 1, 1, 1)
+
+        self.widget = QWidget(self.tabAtendimento)
+        self.widget.setObjectName(u"widget")
+        self.verticalLayout_12 = QVBoxLayout(self.widget)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.txtNomeAtend = QLineEdit(self.widget)
+        self.txtNomeAtend.setObjectName(u"txtNomeAtend")
+
+        self.verticalLayout_12.addWidget(self.txtNomeAtend)
+
+        self.txtCelaAtend = QLineEdit(self.widget)
+        self.txtCelaAtend.setObjectName(u"txtCelaAtend")
+
+        self.verticalLayout_12.addWidget(self.txtCelaAtend)
+
+        self.cbbAtend = QComboBox(self.widget)
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.addItem("")
+        self.cbbAtend.setObjectName(u"cbbAtend")
+
+        self.verticalLayout_12.addWidget(self.cbbAtend)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 350, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
+
+        self.verticalLayout_12.addItem(self.verticalSpacer_4)
+
+
+        self.gridLayout_5.addWidget(self.widget, 1, 0, 1, 1)
+
+        self.frame_20 = QFrame(self.tabAtendimento)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.treeAtendimento = QTreeWidget(self.frame_20)
+        self.treeAtendimento.setObjectName(u"treeAtendimento")
+
+        self.verticalLayout_9.addWidget(self.treeAtendimento)
+
+
+        self.gridLayout_5.addWidget(self.frame_20, 1, 1, 1, 1)
+
+        self.frame_21 = QFrame(self.tabAtendimento)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.btnEntAtend = QPushButton(self.frame_21)
+        self.btnEntAtend.setObjectName(u"btnEntAtend")
+        self.btnEntAtend.setMaximumSize(QSize(120, 16777215))
+
+        self.horizontalLayout_9.addWidget(self.btnEntAtend)
+
+        self.btnSaiAtend = QPushButton(self.frame_21)
+        self.btnSaiAtend.setObjectName(u"btnSaiAtend")
+        self.btnSaiAtend.setMaximumSize(QSize(120, 16777215))
+
+        self.horizontalLayout_9.addWidget(self.btnSaiAtend)
+
+
+        self.gridLayout_5.addWidget(self.frame_21, 2, 0, 1, 1)
+
+        self.frame_22 = QFrame(self.tabAtendimento)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+
+        self.gridLayout_5.addWidget(self.frame_22, 2, 1, 1, 1)
+
+        self.tabWidget.addTab(self.tabAtendimento, "")
 
         self.verticalLayout_7.addWidget(self.tabWidget)
 
 
         self.retranslateUi(Widget)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -552,41 +567,12 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
-        ___qtreewidgetitem = self.twLixo.headerItem()
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem1 = self.twJardin.headerItem()
-        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem2 = self.twEletricista.headerItem()
-        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem3 = self.twHorta.headerItem()
-        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem4 = self.twCostura.headerItem()
-        ___qtreewidgetitem4.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem5 = self.twObra.headerItem()
-        ___qtreewidgetitem5.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem6 = self.twFaxina.headerItem()
-        ___qtreewidgetitem6.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem7 = self.twPrendedor.headerItem()
-        ___qtreewidgetitem7.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem8 = self.twCopa.headerItem()
-        ___qtreewidgetitem8.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem9 = self.twAdm.headerItem()
-        ___qtreewidgetitem9.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-        ___qtreewidgetitem10 = self.twCozinha.headerItem()
-        ___qtreewidgetitem10.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
-
-        __sortingEnabled = self.twCozinha.isSortingEnabled()
-        self.twCozinha.setSortingEnabled(False)
-        self.twCozinha.setSortingEnabled(__sortingEnabled)
-
-        ___qtreewidgetitem11 = self.twSerra.headerItem()
-        ___qtreewidgetitem11.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
         self.txtBarCodeExib.setText(QCoreApplication.translate("Widget", u"C\u00f3digo de barras", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabExib), QCoreApplication.translate("Widget", u"Exibi\u00e7\u00e3o", None))
-        ___qtreewidgetitem12 = self.treeInternos.headerItem()
-        ___qtreewidgetitem12.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
-        ___qtreewidgetitem12.setText(1, QCoreApplication.translate("Widget", u"RGI", None));
-        ___qtreewidgetitem12.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
+        ___qtreewidgetitem = self.treeInternos.headerItem()
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("Widget", u"RGI", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
         self.label_2.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Internos cadastrados</span></p></body></html>", None))
         self.btnAtualizar.setText(QCoreApplication.translate("Widget", u"Atualizar", None))
         self.btnSalvar.setText(QCoreApplication.translate("Widget", u"Salvar", None))
@@ -606,8 +592,8 @@ class Ui_Widget(object):
         self.btnDeletarCadastro.setText(QCoreApplication.translate("Widget", u"Deletar", None))
         self.label_4.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Setores Cadastrados</span></p></body></html>", None))
         self.btnAtualizarSetor.setText(QCoreApplication.translate("Widget", u"Atualizar", None))
-        ___qtreewidgetitem13 = self.treeSetores.headerItem()
-        ___qtreewidgetitem13.setText(0, QCoreApplication.translate("Widget", u"Setores", None));
+        ___qtreewidgetitem1 = self.treeSetores.headerItem()
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("Widget", u"Setores", None));
         self.label_3.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Cadastrar/Atualizar Setores</span></p></body></html>", None))
         self.txtSetorCadastro.setText(QCoreApplication.translate("Widget", u"Setor", None))
         self.lblCor.setText("")
@@ -615,13 +601,33 @@ class Ui_Widget(object):
 #if QT_CONFIG(accessibility)
         self.tabContVideo.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
-        self.label_6.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; vertical-align:super;\">Internos em Audi\u00eancia</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Internos em Audi\u00eancia</span></p></body></html>", None))
         self.txtNomeAud.setText(QCoreApplication.translate("Widget", u"Nome", None))
         self.txtCelaAud.setText(QCoreApplication.translate("Widget", u"Cela", None))
-        ___qtreewidgetitem14 = self.twAudiencia.headerItem()
-        ___qtreewidgetitem14.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
+        ___qtreewidgetitem2 = self.twAudiencia.headerItem()
+        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
         self.pbEntradaAud.setText(QCoreApplication.translate("Widget", u"Entrada", None))
         self.btnSaidaAud.setText(QCoreApplication.translate("Widget", u"Saida", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabContVideo), QCoreApplication.translate("Widget", u"Controle Video", None))
+        self.lblAtendimento.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Atendimento</span></p></body></html>", None))
+        self.txtNomeAtend.setText(QCoreApplication.translate("Widget", u"Nome", None))
+        self.txtCelaAtend.setText(QCoreApplication.translate("Widget", u"Cela", None))
+        self.cbbAtend.setItemText(0, QCoreApplication.translate("Widget", u"MEDICO", None))
+        self.cbbAtend.setItemText(1, QCoreApplication.translate("Widget", u"DENTISTA", None))
+        self.cbbAtend.setItemText(2, QCoreApplication.translate("Widget", u"ASSITENCIA SOCIAL", None))
+        self.cbbAtend.setItemText(3, QCoreApplication.translate("Widget", u"PSICOLOGA", None))
+        self.cbbAtend.setItemText(4, QCoreApplication.translate("Widget", u"SEGURAN\u00c7A", None))
+        self.cbbAtend.setItemText(5, QCoreApplication.translate("Widget", u"DISCIPLINA", None))
+        self.cbbAtend.setItemText(6, QCoreApplication.translate("Widget", u"JURIDICO", None))
+        self.cbbAtend.setItemText(7, QCoreApplication.translate("Widget", u"TRABALHO", None))
+        self.cbbAtend.setItemText(8, QCoreApplication.translate("Widget", u"OUTROS", None))
+
+        ___qtreewidgetitem3 = self.treeAtendimento.headerItem()
+        ___qtreewidgetitem3.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
+        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
+        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
+        self.btnEntAtend.setText(QCoreApplication.translate("Widget", u"Entrada", None))
+        self.btnSaiAtend.setText(QCoreApplication.translate("Widget", u"Saida", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAtendimento), QCoreApplication.translate("Widget", u"Atendimento", None))
     # retranslateUi
 
