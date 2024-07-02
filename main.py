@@ -4,6 +4,8 @@ import sys
 import sqlite3
 from PySide6.QtWidgets import QApplication, QWidget, QColorDialog, QMessageBox, QTreeWidgetItem, QFileDialog, QDialog, QVBoxLayout, QLabel, QPushButton
 from form import Ui_Widget
+from exib import Ui_Form
+from exibAtend import Ui_Form_Atend
 from PySide6.QtGui import QColor, QPixmap
 
 class MainWindow(QWidget):
@@ -24,9 +26,12 @@ class MainWindow(QWidget):
         self.ui.btnDeletar.clicked.connect(self.delete_interno)
         self.ui.pbEntradaAud.clicked.connect(self.save_video)
         self.ui.btnSaidaAud.clicked.connect(self.delete_video)
+        self.ui.btnEntAtend.clicked.connect(self.save_atendimento)
+        self.ui.btnSaiAtend.clicked.connect(self.delete_atendimento)
         self.load_video()
         self.load_setores()
         self.load_internos()
+        self.load_atendimento()
         
 
     def create_tables(self):
@@ -46,6 +51,12 @@ class MainWindow(QWidget):
                                 id INTEGER PRIMARY KEY,
                                 nome_video TEXT NOT NULL,
                                 cela_video TEXT NOT NULL)''')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS atendimento (
+                                id INTEGER PRIMARY KEY,
+                                nome TEXT NOT NULL,
+                                cela TEXT NOT NULL,
+                                setor TEXT NOT NULL)''')
+
         self.connection.commit()
 
     def choose_color(self, event):
@@ -157,6 +168,8 @@ class MainWindow(QWidget):
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um interno para deletar.')
 
+    # controle de vídeo audiencia
+
     def save_video(self):
         nome_video = self.ui.txtNomeAud.text().upper()
         cela_video = self.ui.txtCelaAud.text().upper()
@@ -188,6 +201,43 @@ class MainWindow(QWidget):
                 self.load_video()
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um vídeo para deletar.')
+
+    #fim da parte de controle de vídeo audiencia
+
+    #controle da aba de Atendimento
+
+    def save_atendimento(self):
+        nome = self.ui.txtNomeAtend.text().upper()
+        cela = self.ui.txtCelaAtend.text().upper()
+        setor = self.ui.cbbAtend.currentText().upper()
+        if nome and cela and setor:
+            self.cursor.execute('INSERT INTO atendimento (nome, cela, setor) VALUES (?, ?, ?)', (nome, cela, setor))
+            self.connection.commit()
+            QMessageBox.information(self, 'Success', 'Atendimento cadastrado com sucesso!')
+            self.load_atendimento()
+    
+    def load_atendimento(self):
+        self.ui.treeAtendimento.clear()
+        self.cursor.execute('SELECT nome, cela, setor FROM atendimento')
+        atendimento = self.cursor.fetchall()
+        for atend in atendimento:
+            item = QTreeWidgetItem([atend[0], atend[1], atend[2]])
+            self.ui.treeAtendimento.addTopLevelItem(item)
+
+    def delete_atendimento(self):
+        selected_item = self.ui.treeAtendimento.currentItem()
+        if selected_item:
+            nome = selected_item.text(0)
+            reply = QMessageBox.question(self, 'Confirmar Exclusão', f'Tem certeza que deseja excluir o atendimento {nome}?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                self.cursor.execute('DELETE FROM atendimento WHERE nome = ?', (nome,))
+                self.connection.commit()
+                QMessageBox.information(self, 'Success', 'Atendimento deletado com sucesso!')
+                self.load_atendimento()
+        else:
+            QMessageBox.warning(self, 'Warning', 'Por favor, selecione um atendimento para deletar.')
+        #fim da parte de controle de atendimento
+
 
     def closeEvent(self, event):
         self.connection.close()
