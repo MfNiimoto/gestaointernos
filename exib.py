@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QHeaderView, QLabel, QSizePolicy,
     QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
+class Ui_Form_Trab(object):
+    def setupUiTrab(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(353, 372)
