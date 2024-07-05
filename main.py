@@ -1,10 +1,11 @@
 # main.py
 
+from json import load
 import sys
 import sqlite3
 from PySide6.QtWidgets import QApplication, QWidget, QColorDialog, QMessageBox, QTreeWidgetItem, QFileDialog, QDialog, QVBoxLayout, QLabel, QPushButton
 from form import Ui_Widget
-from exib import Ui_Form
+from exibTrab import Ui_Form_Trab
 from exibAtend import Ui_Form_Atend
 from PySide6.QtGui import QColor, QPixmap
 
@@ -238,6 +239,25 @@ class MainWindow(QWidget):
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um atendimento para deletar.')
         #fim da parte de controle de atendimento
 
+    #inicio da parte de exibição dos internos
+
+    #pesquisar interno por código de barras
+    def search_barcode(self):
+        barcode = self.ui.txtBarCodeExib.text()
+        self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos WHERE barcode = ?', (barcode,))
+        interno = self.cursor.fetchone()
+        if interno:
+            self.ui.txtNomeExib.setText(interno[0])
+            self.ui.txtRGIExib.setText(interno[1])
+            self.ui.txtCelaExib.setText(interno[3])
+            self.ui.cbbSetorExib.setCurrentText(interno[2])
+            self.ui.pbEntrada.setEnabled(True)
+        else:
+            QMessageBox.warning(self, 'Warning', 'Código de barras inválido.')
+
+    def iniciate_ui_trab(self):
+        self.ui.setupUiTrab(self)
+    
 
     def closeEvent(self, event):
         self.connection.close()
