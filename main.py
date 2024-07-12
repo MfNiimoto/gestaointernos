@@ -245,6 +245,7 @@ class MainWindow(QWidget):
     def search_barcode(self):
         barcode = self.ui.txtBarCodeExib.text()
         self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos WHERE barcode = ?', (barcode,))
+        
         interno = self.cursor.fetchone()
         if interno:
             self.ui.txtNomeExib.setText(interno[0])
@@ -254,10 +255,6 @@ class MainWindow(QWidget):
             self.ui.pbEntrada.setEnabled(True)
         else:
             QMessageBox.warning(self, 'Warning', 'Código de barras inválido.')
-
-    def iniciate_ui_trab(self):
-        self.ui.setupUiTrab(self)
-    
 
     def closeEvent(self, event):
         self.connection.close()
