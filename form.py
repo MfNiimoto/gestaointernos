@@ -25,7 +25,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(817, 739)
+        Widget.resize(576, 551)
         self.verticalLayout_7 = QVBoxLayout(Widget)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.tabWidget = QTabWidget(Widget)
@@ -35,24 +35,535 @@ class Ui_Widget(object):
         self.tabExib.setObjectName(u"tabExib")
         self.gridLayout_4 = QGridLayout(self.tabExib)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.txtBarCodeExib = QLineEdit(self.tabExib)
-        self.txtBarCodeExib.setObjectName(u"txtBarCodeExib")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        self.frameExib = QFrame(self.tabExib)
+        self.frameExib.setObjectName(u"frameExib")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txtBarCodeExib.sizePolicy().hasHeightForWidth())
-        self.txtBarCodeExib.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.frameExib.sizePolicy().hasHeightForWidth())
+        self.frameExib.setSizePolicy(sizePolicy)
+        self.frameExib.setFrameShape(QFrame.StyledPanel)
+        self.frameExib.setFrameShadow(QFrame.Raised)
+        self.frame_setor_1 = QFrame(self.frameExib)
+        self.frame_setor_1.setObjectName(u"frame_setor_1")
+        self.frame_setor_1.setEnabled(False)
+        self.frame_setor_1.setGeometry(QRect(10, 10, 250, 250))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy1.setHorizontalStretch(250)
+        sizePolicy1.setVerticalStretch(250)
+        sizePolicy1.setHeightForWidth(self.frame_setor_1.sizePolicy().hasHeightForWidth())
+        self.frame_setor_1.setSizePolicy(sizePolicy1)
+        self.frame_setor_1.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_1.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_13 = QVBoxLayout(self.frame_setor_1)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.label_setor_1 = QLabel(self.frame_setor_1)
+        self.label_setor_1.setObjectName(u"label_setor_1")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy2.setHorizontalStretch(250)
+        sizePolicy2.setVerticalStretch(25)
+        sizePolicy2.setHeightForWidth(self.label_setor_1.sizePolicy().hasHeightForWidth())
+        self.label_setor_1.setSizePolicy(sizePolicy2)
+        self.label_setor_1.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_1.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_1.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_13.addWidget(self.label_setor_1)
+
+        self.tw_setor_1 = QTreeWidget(self.frame_setor_1)
+        self.tw_setor_1.setObjectName(u"tw_setor_1")
+
+        self.verticalLayout_13.addWidget(self.tw_setor_1)
+
+        self.frame_setor_2 = QFrame(self.frameExib)
+        self.frame_setor_2.setObjectName(u"frame_setor_2")
+        self.frame_setor_2.setEnabled(False)
+        self.frame_setor_2.setGeometry(QRect(400, 100, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_2.sizePolicy().hasHeightForWidth())
+        self.frame_setor_2.setSizePolicy(sizePolicy1)
+        self.frame_setor_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.frame_setor_2)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.label_setor_2 = QLabel(self.frame_setor_2)
+        self.label_setor_2.setObjectName(u"label_setor_2")
+        sizePolicy2.setHeightForWidth(self.label_setor_2.sizePolicy().hasHeightForWidth())
+        self.label_setor_2.setSizePolicy(sizePolicy2)
+        self.label_setor_2.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_2.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_2.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_14.addWidget(self.label_setor_2)
+
+        self.tw_setor_2 = QTreeWidget(self.frame_setor_2)
+        self.tw_setor_2.setObjectName(u"tw_setor_2")
+
+        self.verticalLayout_14.addWidget(self.tw_setor_2)
+
+        self.frame_setor_3 = QFrame(self.frameExib)
+        self.frame_setor_3.setObjectName(u"frame_setor_3")
+        self.frame_setor_3.setEnabled(False)
+        self.frame_setor_3.setGeometry(QRect(500, 30, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_3.sizePolicy().hasHeightForWidth())
+        self.frame_setor_3.setSizePolicy(sizePolicy1)
+        self.frame_setor_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.frame_setor_3)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.label_setor_3 = QLabel(self.frame_setor_3)
+        self.label_setor_3.setObjectName(u"label_setor_3")
+        sizePolicy2.setHeightForWidth(self.label_setor_3.sizePolicy().hasHeightForWidth())
+        self.label_setor_3.setSizePolicy(sizePolicy2)
+        self.label_setor_3.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_3.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_3.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_15.addWidget(self.label_setor_3)
+
+        self.tw_setor_3 = QTreeWidget(self.frame_setor_3)
+        self.tw_setor_3.setObjectName(u"tw_setor_3")
+
+        self.verticalLayout_15.addWidget(self.tw_setor_3)
+
+        self.frame_setor_4 = QFrame(self.frameExib)
+        self.frame_setor_4.setObjectName(u"frame_setor_4")
+        self.frame_setor_4.setEnabled(False)
+        self.frame_setor_4.setGeometry(QRect(470, 40, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_4.sizePolicy().hasHeightForWidth())
+        self.frame_setor_4.setSizePolicy(sizePolicy1)
+        self.frame_setor_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.frame_setor_4)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.label_setor_4 = QLabel(self.frame_setor_4)
+        self.label_setor_4.setObjectName(u"label_setor_4")
+        sizePolicy2.setHeightForWidth(self.label_setor_4.sizePolicy().hasHeightForWidth())
+        self.label_setor_4.setSizePolicy(sizePolicy2)
+        self.label_setor_4.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_4.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_4.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_16.addWidget(self.label_setor_4)
+
+        self.tw_setor_4 = QTreeWidget(self.frame_setor_4)
+        self.tw_setor_4.setObjectName(u"tw_setor_4")
+
+        self.verticalLayout_16.addWidget(self.tw_setor_4)
+
+        self.frame_setor_5 = QFrame(self.frameExib)
+        self.frame_setor_5.setObjectName(u"frame_setor_5")
+        self.frame_setor_5.setEnabled(False)
+        self.frame_setor_5.setGeometry(QRect(430, 50, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_5.sizePolicy().hasHeightForWidth())
+        self.frame_setor_5.setSizePolicy(sizePolicy1)
+        self.frame_setor_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_5.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_17 = QVBoxLayout(self.frame_setor_5)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.label_setor_5 = QLabel(self.frame_setor_5)
+        self.label_setor_5.setObjectName(u"label_setor_5")
+        sizePolicy2.setHeightForWidth(self.label_setor_5.sizePolicy().hasHeightForWidth())
+        self.label_setor_5.setSizePolicy(sizePolicy2)
+        self.label_setor_5.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_5.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_5.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_17.addWidget(self.label_setor_5)
+
+        self.tw_setor_5 = QTreeWidget(self.frame_setor_5)
+        self.tw_setor_5.setObjectName(u"tw_setor_5")
+
+        self.verticalLayout_17.addWidget(self.tw_setor_5)
+
+        self.frame_setor_6 = QFrame(self.frameExib)
+        self.frame_setor_6.setObjectName(u"frame_setor_6")
+        self.frame_setor_6.setEnabled(False)
+        self.frame_setor_6.setGeometry(QRect(370, 60, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_6.sizePolicy().hasHeightForWidth())
+        self.frame_setor_6.setSizePolicy(sizePolicy1)
+        self.frame_setor_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_6.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.frame_setor_6)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.label_setor_6 = QLabel(self.frame_setor_6)
+        self.label_setor_6.setObjectName(u"label_setor_6")
+        sizePolicy2.setHeightForWidth(self.label_setor_6.sizePolicy().hasHeightForWidth())
+        self.label_setor_6.setSizePolicy(sizePolicy2)
+        self.label_setor_6.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_6.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_6.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_18.addWidget(self.label_setor_6)
+
+        self.tw_setor_6 = QTreeWidget(self.frame_setor_6)
+        self.tw_setor_6.setObjectName(u"tw_setor_6")
+
+        self.verticalLayout_18.addWidget(self.tw_setor_6)
+
+        self.frame_setor_7 = QFrame(self.frameExib)
+        self.frame_setor_7.setObjectName(u"frame_setor_7")
+        self.frame_setor_7.setEnabled(False)
+        self.frame_setor_7.setGeometry(QRect(320, 120, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_7.sizePolicy().hasHeightForWidth())
+        self.frame_setor_7.setSizePolicy(sizePolicy1)
+        self.frame_setor_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_7.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.frame_setor_7)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.label_setor_7 = QLabel(self.frame_setor_7)
+        self.label_setor_7.setObjectName(u"label_setor_7")
+        sizePolicy2.setHeightForWidth(self.label_setor_7.sizePolicy().hasHeightForWidth())
+        self.label_setor_7.setSizePolicy(sizePolicy2)
+        self.label_setor_7.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_7.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_7.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_19.addWidget(self.label_setor_7)
+
+        self.tw_setor_7 = QTreeWidget(self.frame_setor_7)
+        self.tw_setor_7.setObjectName(u"tw_setor_7")
+
+        self.verticalLayout_19.addWidget(self.tw_setor_7)
+
+        self.frame_setor_8 = QFrame(self.frameExib)
+        self.frame_setor_8.setObjectName(u"frame_setor_8")
+        self.frame_setor_8.setEnabled(False)
+        self.frame_setor_8.setGeometry(QRect(280, 340, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_8.sizePolicy().hasHeightForWidth())
+        self.frame_setor_8.setSizePolicy(sizePolicy1)
+        self.frame_setor_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_8.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_20 = QVBoxLayout(self.frame_setor_8)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.label_setor_8 = QLabel(self.frame_setor_8)
+        self.label_setor_8.setObjectName(u"label_setor_8")
+        sizePolicy2.setHeightForWidth(self.label_setor_8.sizePolicy().hasHeightForWidth())
+        self.label_setor_8.setSizePolicy(sizePolicy2)
+        self.label_setor_8.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_8.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_8.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_20.addWidget(self.label_setor_8)
+
+        self.tw_setor_8 = QTreeWidget(self.frame_setor_8)
+        self.tw_setor_8.setObjectName(u"tw_setor_8")
+
+        self.verticalLayout_20.addWidget(self.tw_setor_8)
+
+        self.frame_setor_9 = QFrame(self.frameExib)
+        self.frame_setor_9.setObjectName(u"frame_setor_9")
+        self.frame_setor_9.setEnabled(False)
+        self.frame_setor_9.setGeometry(QRect(300, 160, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_9.sizePolicy().hasHeightForWidth())
+        self.frame_setor_9.setSizePolicy(sizePolicy1)
+        self.frame_setor_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_9.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.frame_setor_9)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.label_setor_9 = QLabel(self.frame_setor_9)
+        self.label_setor_9.setObjectName(u"label_setor_9")
+        sizePolicy2.setHeightForWidth(self.label_setor_9.sizePolicy().hasHeightForWidth())
+        self.label_setor_9.setSizePolicy(sizePolicy2)
+        self.label_setor_9.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_9.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_9.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_21.addWidget(self.label_setor_9)
+
+        self.tw_setor_9 = QTreeWidget(self.frame_setor_9)
+        self.tw_setor_9.setObjectName(u"tw_setor_9")
+
+        self.verticalLayout_21.addWidget(self.tw_setor_9)
+
+        self.frame_setor_10 = QFrame(self.frameExib)
+        self.frame_setor_10.setObjectName(u"frame_setor_10")
+        self.frame_setor_10.setEnabled(False)
+        self.frame_setor_10.setGeometry(QRect(300, 70, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_10.sizePolicy().hasHeightForWidth())
+        self.frame_setor_10.setSizePolicy(sizePolicy1)
+        self.frame_setor_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_10.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_22 = QVBoxLayout(self.frame_setor_10)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.label_setor_10 = QLabel(self.frame_setor_10)
+        self.label_setor_10.setObjectName(u"label_setor_10")
+        sizePolicy2.setHeightForWidth(self.label_setor_10.sizePolicy().hasHeightForWidth())
+        self.label_setor_10.setSizePolicy(sizePolicy2)
+        self.label_setor_10.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_10.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_10.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_22.addWidget(self.label_setor_10)
+
+        self.tw_setor_10 = QTreeWidget(self.frame_setor_10)
+        self.tw_setor_10.setObjectName(u"tw_setor_10")
+
+        self.verticalLayout_22.addWidget(self.tw_setor_10)
+
+        self.frame_setor_11 = QFrame(self.frameExib)
+        self.frame_setor_11.setObjectName(u"frame_setor_11")
+        self.frame_setor_11.setEnabled(False)
+        self.frame_setor_11.setGeometry(QRect(200, 380, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_11.sizePolicy().hasHeightForWidth())
+        self.frame_setor_11.setSizePolicy(sizePolicy1)
+        self.frame_setor_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_11.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_setor_11)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.label_setor_11 = QLabel(self.frame_setor_11)
+        self.label_setor_11.setObjectName(u"label_setor_11")
+        sizePolicy2.setHeightForWidth(self.label_setor_11.sizePolicy().hasHeightForWidth())
+        self.label_setor_11.setSizePolicy(sizePolicy2)
+        self.label_setor_11.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_11.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_11.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_23.addWidget(self.label_setor_11)
+
+        self.tw_setor_11 = QTreeWidget(self.frame_setor_11)
+        self.tw_setor_11.setObjectName(u"tw_setor_11")
+
+        self.verticalLayout_23.addWidget(self.tw_setor_11)
+
+        self.frame_setor_12 = QFrame(self.frameExib)
+        self.frame_setor_12.setObjectName(u"frame_setor_12")
+        self.frame_setor_12.setEnabled(False)
+        self.frame_setor_12.setGeometry(QRect(300, 50, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_12.sizePolicy().hasHeightForWidth())
+        self.frame_setor_12.setSizePolicy(sizePolicy1)
+        self.frame_setor_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_12.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.frame_setor_12)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.label_setor_12 = QLabel(self.frame_setor_12)
+        self.label_setor_12.setObjectName(u"label_setor_12")
+        sizePolicy2.setHeightForWidth(self.label_setor_12.sizePolicy().hasHeightForWidth())
+        self.label_setor_12.setSizePolicy(sizePolicy2)
+        self.label_setor_12.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_12.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_12.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_24.addWidget(self.label_setor_12)
+
+        self.tw_setor_12 = QTreeWidget(self.frame_setor_12)
+        self.tw_setor_12.setObjectName(u"tw_setor_12")
+
+        self.verticalLayout_24.addWidget(self.tw_setor_12)
+
+        self.frame_setor_13 = QFrame(self.frameExib)
+        self.frame_setor_13.setObjectName(u"frame_setor_13")
+        self.frame_setor_13.setEnabled(False)
+        self.frame_setor_13.setGeometry(QRect(290, 30, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_13.sizePolicy().hasHeightForWidth())
+        self.frame_setor_13.setSizePolicy(sizePolicy1)
+        self.frame_setor_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_13.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame_setor_13)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_setor_13 = QLabel(self.frame_setor_13)
+        self.label_setor_13.setObjectName(u"label_setor_13")
+        sizePolicy2.setHeightForWidth(self.label_setor_13.sizePolicy().hasHeightForWidth())
+        self.label_setor_13.setSizePolicy(sizePolicy2)
+        self.label_setor_13.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_13.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_13.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_25.addWidget(self.label_setor_13)
+
+        self.tw_setor_13 = QTreeWidget(self.frame_setor_13)
+        self.tw_setor_13.setObjectName(u"tw_setor_13")
+
+        self.verticalLayout_25.addWidget(self.tw_setor_13)
+
+        self.frame_setor_14 = QFrame(self.frameExib)
+        self.frame_setor_14.setObjectName(u"frame_setor_14")
+        self.frame_setor_14.setEnabled(False)
+        self.frame_setor_14.setGeometry(QRect(230, 330, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_14.sizePolicy().hasHeightForWidth())
+        self.frame_setor_14.setSizePolicy(sizePolicy1)
+        self.frame_setor_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_14.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_26 = QVBoxLayout(self.frame_setor_14)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_setor_14 = QLabel(self.frame_setor_14)
+        self.label_setor_14.setObjectName(u"label_setor_14")
+        sizePolicy2.setHeightForWidth(self.label_setor_14.sizePolicy().hasHeightForWidth())
+        self.label_setor_14.setSizePolicy(sizePolicy2)
+        self.label_setor_14.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_14.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_14.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_26.addWidget(self.label_setor_14)
+
+        self.tw_setor_14 = QTreeWidget(self.frame_setor_14)
+        self.tw_setor_14.setObjectName(u"tw_setor_14")
+
+        self.verticalLayout_26.addWidget(self.tw_setor_14)
+
+        self.frame_setor_15 = QFrame(self.frameExib)
+        self.frame_setor_15.setObjectName(u"frame_setor_15")
+        self.frame_setor_15.setEnabled(False)
+        self.frame_setor_15.setGeometry(QRect(160, 310, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_15.sizePolicy().hasHeightForWidth())
+        self.frame_setor_15.setSizePolicy(sizePolicy1)
+        self.frame_setor_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_15.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_27 = QVBoxLayout(self.frame_setor_15)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.label_setor_15 = QLabel(self.frame_setor_15)
+        self.label_setor_15.setObjectName(u"label_setor_15")
+        sizePolicy2.setHeightForWidth(self.label_setor_15.sizePolicy().hasHeightForWidth())
+        self.label_setor_15.setSizePolicy(sizePolicy2)
+        self.label_setor_15.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_15.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_15.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_27.addWidget(self.label_setor_15)
+
+        self.tw_setor_15 = QTreeWidget(self.frame_setor_15)
+        self.tw_setor_15.setObjectName(u"tw_setor_15")
+
+        self.verticalLayout_27.addWidget(self.tw_setor_15)
+
+        self.frame_setor_16 = QFrame(self.frameExib)
+        self.frame_setor_16.setObjectName(u"frame_setor_16")
+        self.frame_setor_16.setEnabled(False)
+        self.frame_setor_16.setGeometry(QRect(190, 290, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_16.sizePolicy().hasHeightForWidth())
+        self.frame_setor_16.setSizePolicy(sizePolicy1)
+        self.frame_setor_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_16.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.frame_setor_16)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.label_setor_16 = QLabel(self.frame_setor_16)
+        self.label_setor_16.setObjectName(u"label_setor_16")
+        sizePolicy2.setHeightForWidth(self.label_setor_16.sizePolicy().hasHeightForWidth())
+        self.label_setor_16.setSizePolicy(sizePolicy2)
+        self.label_setor_16.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_16.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_16.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_28.addWidget(self.label_setor_16)
+
+        self.tw_setor_16 = QTreeWidget(self.frame_setor_16)
+        self.tw_setor_16.setObjectName(u"tw_setor_16")
+
+        self.verticalLayout_28.addWidget(self.tw_setor_16)
+
+        self.frame_setor_17 = QFrame(self.frameExib)
+        self.frame_setor_17.setObjectName(u"frame_setor_17")
+        self.frame_setor_17.setEnabled(False)
+        self.frame_setor_17.setGeometry(QRect(260, 260, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_17.sizePolicy().hasHeightForWidth())
+        self.frame_setor_17.setSizePolicy(sizePolicy1)
+        self.frame_setor_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_17.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.frame_setor_17)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.label_setor_17 = QLabel(self.frame_setor_17)
+        self.label_setor_17.setObjectName(u"label_setor_17")
+        sizePolicy2.setHeightForWidth(self.label_setor_17.sizePolicy().hasHeightForWidth())
+        self.label_setor_17.setSizePolicy(sizePolicy2)
+        self.label_setor_17.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_17.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_17.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_29.addWidget(self.label_setor_17)
+
+        self.tw_setor_17 = QTreeWidget(self.frame_setor_17)
+        self.tw_setor_17.setObjectName(u"tw_setor_17")
+
+        self.verticalLayout_29.addWidget(self.tw_setor_17)
+
+        self.frame_setor_18 = QFrame(self.frameExib)
+        self.frame_setor_18.setObjectName(u"frame_setor_18")
+        self.frame_setor_18.setEnabled(False)
+        self.frame_setor_18.setGeometry(QRect(270, 220, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_18.sizePolicy().hasHeightForWidth())
+        self.frame_setor_18.setSizePolicy(sizePolicy1)
+        self.frame_setor_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_18.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.frame_setor_18)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.label_setor_18 = QLabel(self.frame_setor_18)
+        self.label_setor_18.setObjectName(u"label_setor_18")
+        sizePolicy2.setHeightForWidth(self.label_setor_18.sizePolicy().hasHeightForWidth())
+        self.label_setor_18.setSizePolicy(sizePolicy2)
+        self.label_setor_18.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_18.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_18.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_30.addWidget(self.label_setor_18)
+
+        self.tw_setor_18 = QTreeWidget(self.frame_setor_18)
+        self.tw_setor_18.setObjectName(u"tw_setor_18")
+
+        self.verticalLayout_30.addWidget(self.tw_setor_18)
+
+        self.frame_setor_19 = QFrame(self.frameExib)
+        self.frame_setor_19.setObjectName(u"frame_setor_19")
+        self.frame_setor_19.setEnabled(False)
+        self.frame_setor_19.setGeometry(QRect(290, 160, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_19.sizePolicy().hasHeightForWidth())
+        self.frame_setor_19.setSizePolicy(sizePolicy1)
+        self.frame_setor_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_19.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_31 = QVBoxLayout(self.frame_setor_19)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.label_setor_19 = QLabel(self.frame_setor_19)
+        self.label_setor_19.setObjectName(u"label_setor_19")
+        sizePolicy2.setHeightForWidth(self.label_setor_19.sizePolicy().hasHeightForWidth())
+        self.label_setor_19.setSizePolicy(sizePolicy2)
+        self.label_setor_19.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_19.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_19.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_31.addWidget(self.label_setor_19)
+
+        self.tw_setor_19 = QTreeWidget(self.frame_setor_19)
+        self.tw_setor_19.setObjectName(u"tw_setor_19")
+
+        self.verticalLayout_31.addWidget(self.tw_setor_19)
+
+        self.frame_setor_20 = QFrame(self.frameExib)
+        self.frame_setor_20.setObjectName(u"frame_setor_20")
+        self.frame_setor_20.setEnabled(False)
+        self.frame_setor_20.setGeometry(QRect(290, 150, 250, 250))
+        sizePolicy1.setHeightForWidth(self.frame_setor_20.sizePolicy().hasHeightForWidth())
+        self.frame_setor_20.setSizePolicy(sizePolicy1)
+        self.frame_setor_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_setor_20.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_32 = QVBoxLayout(self.frame_setor_20)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.label_setor_20 = QLabel(self.frame_setor_20)
+        self.label_setor_20.setObjectName(u"label_setor_20")
+        sizePolicy2.setHeightForWidth(self.label_setor_20.sizePolicy().hasHeightForWidth())
+        self.label_setor_20.setSizePolicy(sizePolicy2)
+        self.label_setor_20.setMaximumSize(QSize(16777215, 20))
+        self.label_setor_20.setStyleSheet(u"background-color: rgb(0, 170, 255);")
+        self.label_setor_20.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_32.addWidget(self.label_setor_20)
+
+        self.tw_setor_20 = QTreeWidget(self.frame_setor_20)
+        self.tw_setor_20.setObjectName(u"tw_setor_20")
+
+        self.verticalLayout_32.addWidget(self.tw_setor_20)
+
+
+        self.gridLayout_4.addWidget(self.frameExib, 0, 0, 1, 1)
+
+        self.txtBarCodeExib = QLineEdit(self.tabExib)
+        self.txtBarCodeExib.setObjectName(u"txtBarCodeExib")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.txtBarCodeExib.sizePolicy().hasHeightForWidth())
+        self.txtBarCodeExib.setSizePolicy(sizePolicy3)
         self.txtBarCodeExib.setMaximumSize(QSize(200, 16777215))
         self.txtBarCodeExib.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_4.addWidget(self.txtBarCodeExib, 1, 0, 1, 1)
-
-        self.frameExib = QFrame(self.tabExib)
-        self.frameExib.setObjectName(u"frameExib")
-        self.frameExib.setFrameShape(QFrame.StyledPanel)
-        self.frameExib.setFrameShadow(QFrame.Raised)
-
-        self.gridLayout_4.addWidget(self.frameExib, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.txtBarCodeExib, 2, 0, 1, 1)
 
         self.tabWidget.addTab(self.tabExib, "")
         self.tabCadInt = QWidget()
@@ -68,11 +579,8 @@ class Ui_Widget(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.treeInternos = QTreeWidget(self.frame_5)
         self.treeInternos.setObjectName(u"treeInternos")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.treeInternos.sizePolicy().hasHeightForWidth())
-        self.treeInternos.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.treeInternos.sizePolicy().hasHeightForWidth())
+        self.treeInternos.setSizePolicy(sizePolicy)
         self.treeInternos.setMaximumSize(QSize(390, 16777215))
         self.treeInternos.setFrameShape(QFrame.StyledPanel)
         self.treeInternos.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContentsOnFirstShow)
@@ -283,11 +791,11 @@ class Ui_Widget(object):
 
         self.frame_11 = QFrame(self.tabGerSet)
         self.frame_11.setObjectName(u"frame_11")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.frame_11.sizePolicy().hasHeightForWidth())
-        self.frame_11.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.frame_11.sizePolicy().hasHeightForWidth())
+        self.frame_11.setSizePolicy(sizePolicy4)
         self.frame_11.setMaximumSize(QSize(16777215, 500))
         self.frame_11.setFrameShape(QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Raised)
@@ -301,6 +809,7 @@ class Ui_Widget(object):
         __qtreewidgetitem.setBackground(0, QColor(255, 255, 0));
         self.treeSetores.setHeaderItem(__qtreewidgetitem)
         self.treeSetores.setObjectName(u"treeSetores")
+        self.treeSetores.setEnabled(True)
         self.treeSetores.setMaximumSize(QSize(300, 500))
 
         self.horizontalLayout_6.addWidget(self.treeSetores)
@@ -327,8 +836,8 @@ class Ui_Widget(object):
 
         self.frame_9 = QFrame(self.tabGerSet)
         self.frame_9.setObjectName(u"frame_9")
-        sizePolicy2.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
-        self.frame_9.setSizePolicy(sizePolicy2)
+        sizePolicy4.setHeightForWidth(self.frame_9.sizePolicy().hasHeightForWidth())
+        self.frame_9.setSizePolicy(sizePolicy4)
         self.frame_9.setMaximumSize(QSize(250, 16777215))
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
@@ -389,6 +898,7 @@ class Ui_Widget(object):
 
         self.frame_15 = QFrame(self.tabContVideo)
         self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setEnabled(True)
         self.frame_15.setFrameShape(QFrame.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.frame_15)
@@ -567,12 +1077,92 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
+        self.label_setor_1.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem = self.tw_setor_1.headerItem()
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_2.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem1 = self.tw_setor_2.headerItem()
+        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_3.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem2 = self.tw_setor_3.headerItem()
+        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_4.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem3 = self.tw_setor_4.headerItem()
+        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_5.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem4 = self.tw_setor_5.headerItem()
+        ___qtreewidgetitem4.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem4.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_6.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem5 = self.tw_setor_6.headerItem()
+        ___qtreewidgetitem5.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem5.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_7.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem6 = self.tw_setor_7.headerItem()
+        ___qtreewidgetitem6.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem6.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_8.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem7 = self.tw_setor_8.headerItem()
+        ___qtreewidgetitem7.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_9.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem8 = self.tw_setor_9.headerItem()
+        ___qtreewidgetitem8.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_10.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem9 = self.tw_setor_10.headerItem()
+        ___qtreewidgetitem9.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_11.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem10 = self.tw_setor_11.headerItem()
+        ___qtreewidgetitem10.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_12.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem11 = self.tw_setor_12.headerItem()
+        ___qtreewidgetitem11.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem11.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_13.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem12 = self.tw_setor_13.headerItem()
+        ___qtreewidgetitem12.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem12.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_14.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem13 = self.tw_setor_14.headerItem()
+        ___qtreewidgetitem13.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem13.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_15.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem14 = self.tw_setor_15.headerItem()
+        ___qtreewidgetitem14.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem14.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_16.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem15 = self.tw_setor_16.headerItem()
+        ___qtreewidgetitem15.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem15.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_17.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem16 = self.tw_setor_17.headerItem()
+        ___qtreewidgetitem16.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem16.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_18.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem17 = self.tw_setor_18.headerItem()
+        ___qtreewidgetitem17.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem17.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_19.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem18 = self.tw_setor_19.headerItem()
+        ___qtreewidgetitem18.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem18.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
+        self.label_setor_20.setText(QCoreApplication.translate("Widget", u"SETOR", None))
+        ___qtreewidgetitem19 = self.tw_setor_20.headerItem()
+        ___qtreewidgetitem19.setText(1, QCoreApplication.translate("Widget", u"CELA", None));
+        ___qtreewidgetitem19.setText(0, QCoreApplication.translate("Widget", u"NOME", None));
         self.txtBarCodeExib.setText(QCoreApplication.translate("Widget", u"C\u00f3digo de barras", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabExib), QCoreApplication.translate("Widget", u"Exibi\u00e7\u00e3o", None))
-        ___qtreewidgetitem = self.treeInternos.headerItem()
-        ___qtreewidgetitem.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("Widget", u"RGI", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
+        ___qtreewidgetitem20 = self.treeInternos.headerItem()
+        ___qtreewidgetitem20.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
+        ___qtreewidgetitem20.setText(1, QCoreApplication.translate("Widget", u"RGI", None));
+        ___qtreewidgetitem20.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
         self.label_2.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Internos cadastrados</span></p></body></html>", None))
         self.btnAtualizar.setText(QCoreApplication.translate("Widget", u"Atualizar", None))
         self.btnSalvar.setText(QCoreApplication.translate("Widget", u"Salvar", None))
@@ -592,8 +1182,8 @@ class Ui_Widget(object):
         self.btnDeletarCadastro.setText(QCoreApplication.translate("Widget", u"Deletar", None))
         self.label_4.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Setores Cadastrados</span></p></body></html>", None))
         self.btnAtualizarSetor.setText(QCoreApplication.translate("Widget", u"Atualizar", None))
-        ___qtreewidgetitem1 = self.treeSetores.headerItem()
-        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("Widget", u"Setores", None));
+        ___qtreewidgetitem21 = self.treeSetores.headerItem()
+        ___qtreewidgetitem21.setText(0, QCoreApplication.translate("Widget", u"Setores", None));
         self.label_3.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Cadastrar/Atualizar Setores</span></p></body></html>", None))
         self.txtSetorCadastro.setText(QCoreApplication.translate("Widget", u"Setor", None))
         self.lblCor.setText("")
@@ -604,8 +1194,8 @@ class Ui_Widget(object):
         self.label_6.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; vertical-align:super;\">Internos em Audi\u00eancia</span></p></body></html>", None))
         self.txtNomeAud.setText(QCoreApplication.translate("Widget", u"Nome", None))
         self.txtCelaAud.setText(QCoreApplication.translate("Widget", u"Cela", None))
-        ___qtreewidgetitem2 = self.twAudiencia.headerItem()
-        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
+        ___qtreewidgetitem22 = self.twAudiencia.headerItem()
+        ___qtreewidgetitem22.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
         self.pbEntradaAud.setText(QCoreApplication.translate("Widget", u"Entrada", None))
         self.btnSaidaAud.setText(QCoreApplication.translate("Widget", u"Saida", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabContVideo), QCoreApplication.translate("Widget", u"Controle Video", None))
@@ -622,10 +1212,10 @@ class Ui_Widget(object):
         self.cbbAtend.setItemText(7, QCoreApplication.translate("Widget", u"TRABALHO", None))
         self.cbbAtend.setItemText(8, QCoreApplication.translate("Widget", u"OUTROS", None))
 
-        ___qtreewidgetitem3 = self.treeAtendimento.headerItem()
-        ___qtreewidgetitem3.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
-        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
-        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
+        ___qtreewidgetitem23 = self.treeAtendimento.headerItem()
+        ___qtreewidgetitem23.setText(2, QCoreApplication.translate("Widget", u"Setor", None));
+        ___qtreewidgetitem23.setText(1, QCoreApplication.translate("Widget", u"Cela", None));
+        ___qtreewidgetitem23.setText(0, QCoreApplication.translate("Widget", u"Nome", None));
         self.btnEntAtend.setText(QCoreApplication.translate("Widget", u"Entrada", None))
         self.btnSaiAtend.setText(QCoreApplication.translate("Widget", u"Saida", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAtendimento), QCoreApplication.translate("Widget", u"Atendimento", None))
