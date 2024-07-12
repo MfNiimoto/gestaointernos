@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QHeaderView, QLabel, QSizePolicy,
     QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_Form_Atend(object):
-    def setupUi(self, Form):
+    def setupUiAtend(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(353, 372)
@@ -50,6 +50,7 @@ class Ui_Form_Atend(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.txtSetor.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         ___qtreewidgetitem = self.treeVisSetor.headerItem()
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("Form", u"Setor", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("Form", u"CELA", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("Form", u"NOME", None));
     # retranslateUi
