@@ -1,8 +1,10 @@
 # main.py
 
+from calendar import c
 from json import load
 import sys
 import sqlite3
+from turtle import setworldcoordinates
 from PySide6.QtWidgets import QApplication, QWidget, QColorDialog, QMessageBox, QTreeWidgetItem, QFileDialog, QDialog, QVBoxLayout, QLabel, QPushButton
 from form import Ui_Widget
 from exibTrab import Ui_Form_Trab
@@ -29,6 +31,9 @@ class MainWindow(QWidget):
         self.ui.btnSaidaAud.clicked.connect(self.delete_video)
         self.ui.btnEntAtend.clicked.connect(self.save_atendimento)
         self.ui.btnSaiAtend.clicked.connect(self.delete_atendimento)
+        self.ui.txtBarCodeExib.returnPressed.connect(self.ent_barcode)
+        self.set_setor()
+        self.hide_frame_setor()
         self.load_video()
         self.load_setores()
         self.load_internos()
@@ -128,6 +133,81 @@ class MainWindow(QWidget):
         for interno in internos:
             item = QTreeWidgetItem([interno[0], interno[1], interno[2], interno[3]])
             self.ui.treeInternos.addTopLevelItem(item)
+
+    #hide frame_setor_1 ao frame_setor_20  
+    def hide_frame_setor(self):
+        self.ui.frame_setor_1.hide()
+        self.ui.frame_setor_2.hide()
+        self.ui.frame_setor_3.hide()
+        self.ui.frame_setor_4.hide()
+        self.ui.frame_setor_5.hide()
+        self.ui.frame_setor_6.hide()
+        self.ui.frame_setor_7.hide()
+        self.ui.frame_setor_8.hide()
+        self.ui.frame_setor_9.hide()
+        self.ui.frame_setor_10.hide()
+        self.ui.frame_setor_11.hide()
+        self.ui.frame_setor_12.hide()
+        self.ui.frame_setor_13.hide()
+        self.ui.frame_setor_14.hide()
+        self.ui.frame_setor_15.hide()
+        self.ui.frame_setor_16.hide()
+        self.ui.frame_setor_17.hide()
+        self.ui.frame_setor_18.hide()
+        self.ui.frame_setor_19.hide()
+        self.ui.frame_setor_20.hide()   
+
+    #atribuir setor para cada frame_setor_1-20
+    def set_setor(self):
+        self.cursor.execute('SELECT nome, cor FROM setores')
+        setores = self.cursor.fetchall()
+        for i, (nome,cor) in enumerate(setores):
+            if i < 20:
+                frame = getattr(self.ui,f'frame_setor_{i+1}')
+                label = getattr(self.ui,f'label_setor_{i+1}')
+                label.setStyleSheet(f'background-color: {cor}')
+                frame.text = nome
+                break
+    
+    def ent_barcode(self): # pesquisar barcode
+        barcode = self.ui.txtBarCodeExib.text()
+
+        self.cursor.execute('SELECT nome, cela, setor FROM internos WHERE barcode = ?', (barcode))
+        interno = self.cursor.fetchall()
+        
+        if interno:
+            nome = interno[0]
+            cela = interno[1]
+            setor = interno[2]
+
+            # procurar frame_setor_1 ao frame_setor_20 com setor correspondente ao interno
+            for i in range(1, 21):
+                
+                #if self.ui.frame_setor_[i].text() == setor: # adicionar o interno ao frame_setor correspondente dentro do treewidget
+                    txt_setor = getattr(self.ui,f'label_setor_{i+1}')
+                    if txt_setor.text() == setor: # adicionar o interno ao frame_setor correspondente dentro do treewidget
+                        self.ui.treeInternos.addTopLevelItem(QTreeWidgetItem([nome, cela]))
+                        self.ui.treeInternos.setCurrentItem(self.ui.treeInternos.topLevelItem(0))
+                        self.ui.treeInternos.setCurrentItem(self.ui.treeInternos.topLevelItem(0))
+
+                    #exibir frame_setor correspondente
+                    frame_setor = getattr(self.ui,f'frame_setor_{i+1}')
+                    frame_setor.show()
+                    break
+    def search_barcode(self): # provacelmente não vou usar
+        barcode = self.ui.txtBarCodeExib.text()
+        self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos WHERE barcode = ?', (barcode,))
+        
+        interno = self.cursor.fetchone()
+        if interno:
+            self.ui.txtNomeExib.setText(interno[0])
+            self.ui.txtRGIExib.setText(interno[1])
+            self.ui.txtCelaExib.setText(interno[3])
+            self.ui.cbbSetorExib.setCurrentText(interno[2])
+            self.ui.pbEntrada.setEnabled(True)
+        else:
+            QMessageBox.warning(self, 'Warning', 'Código de barras inválido.')
+        
 
     def show_interno_details(self, item):
         nome = item.text(0)
@@ -240,21 +320,6 @@ class MainWindow(QWidget):
         #fim da parte de controle de atendimento
 
     #inicio da parte de exibição dos internos
-
-    #pesquisar interno por código de barras
-    def search_barcode(self):
-        barcode = self.ui.txtBarCodeExib.text()
-        self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos WHERE barcode = ?', (barcode,))
-        
-        interno = self.cursor.fetchone()
-        if interno:
-            self.ui.txtNomeExib.setText(interno[0])
-            self.ui.txtRGIExib.setText(interno[1])
-            self.ui.txtCelaExib.setText(interno[3])
-            self.ui.cbbSetorExib.setCurrentText(interno[2])
-            self.ui.pbEntrada.setEnabled(True)
-        else:
-            QMessageBox.warning(self, 'Warning', 'Código de barras inválido.')
 
     def closeEvent(self, event):
         self.connection.close()
