@@ -4,15 +4,18 @@ from calendar import c
 from json import load
 import sys
 import sqlite3
+from datetime import datetime
 from turtle import setworldcoordinates
 from PySide6.QtWidgets import QApplication, QWidget, QColorDialog, QMessageBox, QTreeWidgetItem, QFileDialog, QDialog, QVBoxLayout, QLabel, QPushButton
+from PySide6.QtGui import QColor, QPixmap
+from PySide6.QtCore import QPoint
 from form import Ui_Widget
 from exibTrab import Ui_Form_Trab
 from exibAtend import Ui_Form_Atend
 from PySide6.QtGui import QColor, QPixmap
 
 class MainWindow(QWidget):
-    def __init__(self):
+    def __init__(self): # inicializa a interface gráfica
         super().__init__()
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
@@ -33,14 +36,14 @@ class MainWindow(QWidget):
         self.ui.btnSaiAtend.clicked.connect(self.delete_atendimento)
         self.ui.txtBarCodeExib.returnPressed.connect(self.ent_barcode)
         self.set_setor()
+        self.hideTab()
         self.hide_frame_setor()
         self.load_video()
         self.load_setores()
         self.load_internos()
         self.load_atendimento()
         
-
-    def create_tables(self):
+    def create_tables(self): # cria as tabelas do banco de dados
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS setores (
                                 id INTEGER PRIMARY KEY,
                                 nome TEXT NOT NULL,
@@ -62,16 +65,25 @@ class MainWindow(QWidget):
                                 nome TEXT NOT NULL,
                                 cela TEXT NOT NULL,
                                 setor TEXT NOT NULL)''')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS registros (
+                                id INTEGER PRIMARY KEY,
+                                nome TEXT NOT NULL,
+                                saida DATETIME2,
+                                entrada DATETIME2)''')
 
         self.connection.commit()
 
-    def choose_color(self, event):
+    def hideTab(self):
+        self.ui.tabRelatorio.hide()
+    
+
+    def choose_color(self, event): # escolhe a cor do setor
         color = QColorDialog.getColor()
         if color.isValid():
             self.ui.lblCor.setStyleSheet(f'background-color: {color.name()}')
             self.ui.lblCor.setText(color.name())
 
-    def save_setor(self):
+    def save_setor(self): # salva o setor
         nome = self.ui.txtSetorCadastro.text().upper()
         cor = self.ui.lblCor.text().upper()
         if nome and cor:
@@ -82,7 +94,7 @@ class MainWindow(QWidget):
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, preencha todos os campos.')
 
-    def load_setores(self):
+    def load_setores(self): # carrega os setores da tabela setores no widget tree
         self.ui.treeSetores.clear()
         self.ui.cbbSetor.clear()
         self.cursor.execute('SELECT nome, cor FROM setores')
@@ -94,7 +106,7 @@ class MainWindow(QWidget):
             self.ui.treeSetores.addTopLevelItem(item)
             self.ui.cbbSetor.addItem(setor[0])
 
-    def delete_setor(self):
+    def delete_setor(self): # exclui o setor
         selected_item = self.ui.treeSetores.currentItem()
         if selected_item:
             nome = selected_item.text(0)
@@ -105,37 +117,36 @@ class MainWindow(QWidget):
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um setor para deletar.')
 
-    def select_photo(self):
+    def select_photo(self): # seleciona a foto do interno
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getOpenFileName(self, "Select Photo", "", "Images (*.png *.xpm *.jpg)", options=options)
         if file_name:
             self.ui.tbFoto.setText(file_name)
 
-    def save_interno(self):
-        nome = self.ui.txtNome.text().upper()
+    def save_interno(self): # salva o interno
+        nome = self.ui.txtNome.text().upper()  
         rgi = self.ui.txtRGI.text().upper()
         cela = self.ui.txtCela.text().upper()
         barcode = self.ui.txtBarCode.text().upper()
         setor = self.ui.cbbSetor.currentText().upper()
         foto = self.ui.tbFoto.text()
-        if nome and rgi and cela and barcode and setor:
-            self.cursor.execute('INSERT INTO internos (nome, rgi, cela, barcode, setor, foto) VALUES (?, ?, ?, ?, ?, ?)', (nome, rgi, cela, barcode, setor, foto))
-            self.connection.commit()
+        if nome and rgi and cela and barcode and setor:    # verifica se todos os campos estão preenchidos
+            self.cursor.execute('INSERT INTO internos (nome, rgi, cela, barcode, setor, foto) VALUES (?, ?, ?, ?, ?, ?)', (nome, rgi, cela, barcode, setor, foto)) # insere os dados na tabela internos
+            self.connection.commit() 
             QMessageBox.information(self, 'Success', 'Interno cadastrado com sucesso!')
             self.load_internos()
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, preencha todos os campos.')
 
-    def load_internos(self):
+    def load_internos(self): # carrega os internos da tabela internos no widget tree
         self.ui.treeInternos.clear()
         self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos')
         internos = self.cursor.fetchall()
         for interno in internos:
-            item = QTreeWidgetItem([interno[0], interno[1], interno[2], interno[3]])
-            self.ui.treeInternos.addTopLevelItem(item)
-
-    #hide frame_setor_1 ao frame_setor_20  
-    def hide_frame_setor(self):
+            item = QTreeWidgetItem([interno[0], interno[1], interno[2], interno[3]]) # cria item com os dados da tabela internos
+            self.ui.treeInternos.addTopLevelItem(item) # adiciona o item ao widget tree
+ 
+    def hide_frame_setor(self): # esconde todos os frames de setores
         self.ui.frame_setor_1.hide()
         self.ui.frame_setor_2.hide()
         self.ui.frame_setor_3.hide()
@@ -157,59 +168,109 @@ class MainWindow(QWidget):
         self.ui.frame_setor_19.hide()
         self.ui.frame_setor_20.hide()   
 
-    #atribuir setor para cada frame_setor_1-20
-    def set_setor(self):
+    def set_setor(self): # seta o frame_setor correto para exibir o nome do setor
         self.cursor.execute('SELECT nome, cor FROM setores')
         setores = self.cursor.fetchall()
         for i, (nome,cor) in enumerate(setores):
-            if i < 20:
+            while i < 20:
                 frame = getattr(self.ui,f'frame_setor_{i+1}')
-                label = getattr(self.ui,f'label_setor_{i+1}')
-                label.setStyleSheet(f'background-color: {cor}')
-                frame.text = nome
+                label = getattr(self.ui,f'label_setor_{i+1}')                
+                label.setText(nome)
+                i== i+1
                 break
-    
-    def ent_barcode(self): # pesquisar barcode
+                
+    def set_setor_cor(self, setor, i): # verifica a cor do setor e seta a cor do label
+        self.cursor.execute('SELECT cor FROM setores WHERE nome = ?', (setor,))
+        cor = self.cursor.fetchone()
+        if cor:
+            label = getattr(self.ui,f'label_setor_{i+1}')
+            label.setStyleSheet(f'background-color: {cor[0]}')
+  
+    def ent_barcode(self): 
         barcode = self.ui.txtBarCodeExib.text()
+        self.cursor.execute('SELECT nome, cela, setor FROM internos WHERE barcode = ?', (barcode,))
+        interno = self.cursor.fetchone()
 
-        self.cursor.execute('SELECT nome, cela, setor FROM internos WHERE barcode = ?', (barcode))
-        interno = self.cursor.fetchall()
-        
         if interno:
             nome = interno[0]
             cela = interno[1]
             setor = interno[2]
+            
+            # Variáveis para controlar o estado
+            found = False
+            tree_setor_alocado = None
 
-            # procurar frame_setor_1 ao frame_setor_20 com setor correspondente ao interno
-            for i in range(1, 21):
+            # Passo 1: Verifica se o interno já está em alguma TreeView
+            for i in range(20):
+                tree_setor = getattr(self.ui, f'tw_setor_{i+1}')
+                frame_setor = getattr(self.ui, f'frame_setor_{i+1}')
                 
-                #if self.ui.frame_setor_[i].text() == setor: # adicionar o interno ao frame_setor correspondente dentro do treewidget
-                    txt_setor = getattr(self.ui,f'label_setor_{i+1}')
-                    if txt_setor.text() == setor: # adicionar o interno ao frame_setor correspondente dentro do treewidget
-                        self.ui.treeInternos.addTopLevelItem(QTreeWidgetItem([nome, cela]))
-                        self.ui.treeInternos.setCurrentItem(self.ui.treeInternos.topLevelItem(0))
-                        self.ui.treeInternos.setCurrentItem(self.ui.treeInternos.topLevelItem(0))
+                top_level_count = tree_setor.topLevelItemCount()
+                
+                for j in range(top_level_count):
+                    item = tree_setor.topLevelItem(j)
+                    if item.text(0) == nome:  # Interno já está na TreeView
+                        tree_setor.takeTopLevelItem(j)  # Remove o interno
+                        if tree_setor.topLevelItemCount() == 0:
+                            frame_setor.hide()  # Oculta a TreeView se estiver vazia
+                        self.ui.txtBarCodeExib.clear()
+                        self.registro_saida(barcode)
+                        return  # Termina a função porque o interno foi removido
+            
+            # Passo 2: Verifica se já existe uma TreeView exibida com o setor correspondente
+            for i in range(20):
+                tree_setor = getattr(self.ui, f'tw_setor_{i+1}')
+                frame_setor = getattr(self.ui, f'frame_setor_{i+1}')
+                txt_setor = getattr(self.ui, f'label_setor_{i+1}')
+                
+                if frame_setor.isVisible():  # Se a TreeView está visível
+                    if txt_setor.text() == setor:  # Se é o setor correspondente
+                        tree_setor_alocado = tree_setor
+                        break
+            
+            # Passo 3: Se não encontrar uma TreeView correspondente, busca a primeira disponível
+            if not tree_setor_alocado:
+                for i in range(20):
+                    tree_setor = getattr(self.ui, f'tw_setor_{i+1}')
+                    frame_setor = getattr(self.ui, f'frame_setor_{i+1}')
+                    
+                    if not frame_setor.isVisible():  # Encontrou a primeira TreeView disponível
+                        tree_setor_alocado = tree_setor
+                        txt_setor = getattr(self.ui, f'label_setor_{i+1}')
+                        txt_setor.setText(setor)  # Configura o setor no label
+                        self.set_setor_cor(setor, i) # seta a cor do setor
+                        frame_setor.show()
+                        break
 
-                    #exibir frame_setor correspondente
-                    frame_setor = getattr(self.ui,f'frame_setor_{i+1}')
-                    frame_setor.show()
-                    break
-    def search_barcode(self): # provacelmente não vou usar
-        barcode = self.ui.txtBarCodeExib.text()
-        self.cursor.execute('SELECT nome, rgi, setor, cela FROM internos WHERE barcode = ?', (barcode,))
-        
-        interno = self.cursor.fetchone()
-        if interno:
-            self.ui.txtNomeExib.setText(interno[0])
-            self.ui.txtRGIExib.setText(interno[1])
-            self.ui.txtCelaExib.setText(interno[3])
-            self.ui.cbbSetorExib.setCurrentText(interno[2])
-            self.ui.pbEntrada.setEnabled(True)
+            # Passo 4: Adiciona o interno na TreeView encontrada ou alocada
+            if tree_setor_alocado:
+                tree_setor_alocado.addTopLevelItem(QTreeWidgetItem([nome, cela]))
+                tree_setor_alocado.setCurrentItem(tree_setor_alocado.topLevelItem(0))
+                self.ui.txtBarCodeExib.clear()
+                self.registro_entrada(barcode)
+
         else:
             QMessageBox.warning(self, 'Warning', 'Código de barras inválido.')
-        
 
-    def show_interno_details(self, item):
+    def registro_entrada(self, barcode): # registra a entrada do interno
+        self.cursor.execute('SELECT nome FROM internos WHERE barcode = ?', (barcode,)) # verifica se o interno já foi cadastrado
+        interno = self.cursor.fetchone() # verifica se o interno já foi cadastrado
+        if interno: 
+            nome = interno[0] # nome do interno
+            data_entrada = datetime.now().strftime('%Y-%m-%d %H:%M:%S') # data e hora de entrada
+            self.cursor.execute('INSERT INTO registros (nome, entrada) VALUES (?, ?)', (nome, data_entrada))
+            self.connection.commit()    # registra a entrada do interno
+
+    def registro_saida(self, barcode): # registra a saída do interno
+        self.cursor.execute('SELECT nome FROM internos WHERE barcode = ?', (barcode,)) # verifica se o interno já foi cadastrado
+        interno = self.cursor.fetchone()
+        if interno:
+            nome = interno[0]
+            data_saida = datetime.now().strftime('%Y-%m-%d %H:%M:%S') # data e hora de saída
+            self.cursor.execute('UPDATE registros SET saida = ? WHERE nome = ? AND saida IS NULL', (data_saida, nome))
+            self.connection.commit()
+
+    def show_interno_details(self, item): # exibe os detalhes do interno selecionado
         nome = item.text(0)
         self.cursor.execute('SELECT * FROM internos WHERE nome = ?', (nome,))
         interno = self.cursor.fetchone()
@@ -236,7 +297,7 @@ class MainWindow(QWidget):
             dialog.setLayout(layout)
             dialog.exec()
 
-    def delete_interno(self):
+    def delete_interno(self): # exclui o interno
         selected_item = self.ui.treeInternos.currentItem()
         if selected_item:
             nome = selected_item.text(0)
@@ -249,9 +310,9 @@ class MainWindow(QWidget):
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um interno para deletar.')
 
-    # controle de vídeo audiencia
+      # controle de vídeo audiencia
 
-    def save_video(self):
+    def save_video(self): # salva o vídeo audiencia
         nome_video = self.ui.txtNomeAud.text().upper()
         cela_video = self.ui.txtCelaAud.text().upper()
         if nome_video and cela_video:
@@ -270,7 +331,7 @@ class MainWindow(QWidget):
             item = QTreeWidgetItem([v[0], v[1]])
             self.ui.twAudiencia.addTopLevelItem(item)
     
-    def delete_video(self):
+    def delete_video(self): # exclui o vídeo audiencia
         selected_item = self.ui.twAudiencia.currentItem()
         if selected_item:
             nome_video = selected_item.text(0)
@@ -283,21 +344,17 @@ class MainWindow(QWidget):
         else:
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um vídeo para deletar.')
 
-    #fim da parte de controle de vídeo audiencia
-
-    #controle da aba de Atendimento
-
-    def save_atendimento(self):
-        nome = self.ui.txtNomeAtend.text().upper()
-        cela = self.ui.txtCelaAtend.text().upper()
-        setor = self.ui.cbbAtend.currentText().upper()
-        if nome and cela and setor:
+    def save_atendimento(self): # salva o atendimento
+        nome = self.ui.txtNomeAtend.text().upper() # seleciona o nome do atendimento
+        cela = self.ui.txtCelaAtend.text().upper() # seleciona a cela do atendimento
+        setor = self.ui.cbbAtend.currentText().upper() # seleciona o setor do atendimento
+        if nome and cela and setor: 
             self.cursor.execute('INSERT INTO atendimento (nome, cela, setor) VALUES (?, ?, ?)', (nome, cela, setor))
             self.connection.commit()
             QMessageBox.information(self, 'Success', 'Atendimento cadastrado com sucesso!')
             self.load_atendimento()
     
-    def load_atendimento(self):
+    def load_atendimento(self): # carrega os atendimentos da tabela atendimento no widget tree
         self.ui.treeAtendimento.clear()
         self.cursor.execute('SELECT nome, cela, setor FROM atendimento')
         atendimento = self.cursor.fetchall()
@@ -305,7 +362,8 @@ class MainWindow(QWidget):
             item = QTreeWidgetItem([atend[0], atend[1], atend[2]])
             self.ui.treeAtendimento.addTopLevelItem(item)
 
-    def delete_atendimento(self):
+    def delete_atendimento(self): # exclui o atendimento
+
         selected_item = self.ui.treeAtendimento.currentItem()
         if selected_item:
             nome = selected_item.text(0)
@@ -319,9 +377,7 @@ class MainWindow(QWidget):
             QMessageBox.warning(self, 'Warning', 'Por favor, selecione um atendimento para deletar.')
         #fim da parte de controle de atendimento
 
-    #inicio da parte de exibição dos internos
-
-    def closeEvent(self, event):
+    def closeEvent(self, event): # fecha a conexão com o banco de dados
         self.connection.close()
         event.accept()
 
